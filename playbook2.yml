@@ -1,0 +1,13 @@
+---
+- name: create a file and put some content in the file
+  hosts: all
+  tasks:
+    - name: Create a file
+      file:
+        name: /home/ubuntu/file100
+        state: touch
+    - name: Place some content in the file
+      copy:
+        content: "IntelliQIT"
+        dest: /home/ubuntu/file100
+

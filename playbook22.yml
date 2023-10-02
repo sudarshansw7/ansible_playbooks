@@ -1,0 +1,13 @@
+---
+- name: Create a file on all servers
+  hosts: all
+  vars:
+    - a: 10
+  tasks:
+    - name: Create a file
+      file:
+        name: /tmp/file1
+        state: touch
+        mode: 770
+      when: a == 20
+

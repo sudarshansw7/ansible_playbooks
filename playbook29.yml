@@ -1,0 +1,16 @@
+---
+- name: Install git using apt and yum 
+  hosts: all
+  tasks:
+    - name: Install git using apt modules
+      apt:
+        name: git 
+        state: present
+        update_cache: yes
+      when: ansible_distribution == "Ubuntu"
+    - name: Install git using yum module
+      yum:
+        name: git
+        state: present
+        update_cache: yes
+      when: ansible_distribution == "RedHat"

@@ -1,0 +1,15 @@
+---
+- name: Install docker and required s/w on all servers
+  hosts: all
+  tasks:
+    - name: Install python pip
+      apt:
+        name: python3-pip
+        state: present
+        update_cache: yes
+    - name: Download the docker script and run it and also install docker-py
+      shell: "{{item}}"
+      with_items:
+        - curl -fsSL https://get.docker.com -o install-docker.sh
+        - sh install-docker.sh
+        - pip3 install docker-py
